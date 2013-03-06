@@ -38,7 +38,7 @@ elif [ $# -lt 3 -a "$1" = "create" ]; then
     read -p "Title: " title
     raw=$(curl -s -X "POST" -H "Accept: application/json" -d "{\"title\":\"$title\"}" -H "Content-Type: application/json" "$BULB/idea/")
   fi
-  python -c "raw=$raw;print 'Stored:',raw[0]['id']"
+  python -c "raw=$raw;print $raw;print 'Stored:',raw['id']"
 
 elif [ $# -eq 2 -a "$1" = "get" ]; then
   raw=$(curl -s -H "Accept: application/json" "$BULB/idea/$2/")
